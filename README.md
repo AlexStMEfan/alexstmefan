@@ -1,7 +1,5 @@
-### Hi! My name is ✌️
+<h1 align="center">Hi there, I'm Alex ✌️</h1>
 
-#### iOS developer and UI/UX designer
-
-Alex from Russia. This is where my development and design content will be located. I am actively learning swift frameworks and networking. I also learn the art of design and clean code
+<h3 align="center">iOS developer and UI/UX designer from Russia 🇷🇺</h3>
 
 [![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=alexstmefan)](https://github.com/anuraghazra/github-readme-stats)
