@@ -1,0 +1,342 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chatBot</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="container">
+        <form action="/info_lesson/" method="post" id="info_lesson">
+            <h2>Отзыв об уроке</h2>
+                <hr>
+            <label for="name_Lesson">Наименование онлайн урока</label><br>
+                <input type="text" id="name_Lesson" name="name_Lesson"><br>
+            <label for="date_lesson">Дата проведения онлайн урока</label><br>
+                <input type="date" id="date_Lesson" name="date_lesson"><br>
+            <label for="email_student">Email с которого была отправлена регистрация</label><br>
+                <input type="email" id="email" name="email_student"><br>
+
+            <h3>Выберите форму подключения из списка</h3>
+
+            <select name="form_of_participation" id="form_of_participation" onchange="selectoption();" size="0">
+                <option value="group">Группа</option>
+                <option value="individual">Индивидуально</option>
+            </select>
+        </form>
+
+        <div  id="group_student">
+            <p>Информация об онлайн-мероприятии и слушателях</p>
+
+            <label for="fio_teacher">ФИО Учителя, который организовал участие класса/группы в онлайн уроке</label><br>
+                <input type="text" id="fio_student" name="fio_student"><br>
+            <label for="nubber_teacher">Телефон учителя, который организовал участие в онлайн-уроке</label><br>
+                <input type="tel" id="phone_teacher" name="phone_teacher" pattern="+7-[0-9]{3}-[0-9]{3}-[0-9]{4}" required /><br>
+            <label for="number_classroom">Номер и буква класса, группы.</label><br>
+                <input type="text" id="number_classroom" name="number_classroom"><br>
+            <label for="number_classroom">Количество учеников, присутствоваших на онлайн-уроке</label><br>
+                <input type="text" id="number_classroom" name="number_classroom"><br>
+            <label for="question_session">В эту сессию данный класс/группа участвует в онлайн-уроках первый раз?</label>
+                <select name="question_session" size="0">
+                    <option value="yes">Да</option>
+                    <option value="no">Нет</option>
+                </select>
+            
+            <h3>Информация об образовательной организации</h3>
+            <p>Общая информация:</p>
+
+            <label for="Name_teach_organization">Наименование образовательной организации</label><br>
+                <input type="text" id="Name_teach_organization" name="Name_teach_organization"><br>
+            <label for="Name_teach_organization">Вид образовательной организации</label><br>
+                <select name="question_session" size="0">
+                    <option value="yes">Школа</option>
+                    <option value="no">профессиональная образовательная организация ПОО (техникум, колледж)</option>
+                    <option value="">учреждение для детей-сирот и детей без попеч. родит</option>
+                    <option value="">организация доп. образования</option>
+                    <option value="">детский сад</option>
+                    <option value="">библиотека</option>
+                    <option value="">центр социального обслуживания (помощи) населения</option>
+                    <option value="">иное</option>
+                </select>
+            <label for="Name_teach_organization">Email образовательной организации</label><br>
+                <input type="email" id="email_teach_teach_organization" name="email_teach_teach_organization"><br>
+            <label for="FIO_director_organization">ФИО директора образовательной организации</label><br>
+                <input type="text" id="FIO_director_organization" name="FIO_director_organization"><br>
+            
+            <p>Адрес образовательной организации</p>
+
+            <label for="index">Индекс</label><br>
+                <input type="text" id="index" name="index_adress"><br>
+            <label for="region">Регон</label><br>
+                <select name="region" size="0">
+                    <option value="">Алтайский край</option>
+                    <option value="">Амурская область</option>
+                    <option value="">Архангельская область</option>
+                    <option value="">Астраханская область</option>
+                    <option value="">Белгородская область</option>
+                    <option value="">Брянская область</option>
+                    <option value="">Владимирская область</option>
+                    <option value="">Волгоградская область</option>
+                    <option value="">Вологодская область</option>
+                    <option value="">Воронежская область</option>
+                    <option value="">Санкт-Петербург</option>
+                    <option value="">Севастополь</option>
+                    <option value="">Еврейская автономная область</option>
+                    <option value="">Забайкальский край</option>
+                    <option value="">Ивановская область</option>
+                    <option value="">Иркутская область</option>
+                    <option value="">Кабардино-Балкарская Республика</option>
+                    <option value="">Калининградская область</option>
+                    <option value="">Калужская область</option>
+                    <option value="">Камчатский край</option>
+                    <option value="">Карачаево-Черкесская Республика</option>
+                    <option value="">Кемеровская область - Кузбасс</option>
+                    <option value="">Кировская область</option>
+                    <option value="">Костромская область</option>
+                    <option value="">Краснодарский край</option>
+                    <option value="">Красноярский край</option>
+                    <option value="">Курганская область</option>
+                    <option value="">Курская область</option>
+                    <option value="">Ленинградская область</option>
+                    <option value="">Липецкая область</option>
+                    <option value="">Магаданская область</option>
+                    <option value="">Московская область</option>
+                    <option value="">Мурманская область</option>
+                    <option value="">Ненецкий автономный округ</option>
+                    <option value="">Нижегородская область</option>
+                    <option value="">Новгородская область</option>
+                    <option value="">Новосибирская область</option>
+                    <option value="">Омская область</option>
+                    <option value="">Оренбургская область</option>
+                    <option value="">Орловская область</option>
+                    <option value="">Пензенская область</option>
+                    <option value="">Пермский край</option>
+                    <option value="">Приморский край</option>
+                    <option value="">Псковская область</option>
+                    <option value="">Республика Адыгея</option>
+                    <option value="">Республика Алтай</option>
+                    <option value="">Республика Башкортостан</option>
+                    <option value="">Республика Бурятия</option>
+                    <option value="">Республика Дагестан</option>
+                    <option value="">Республика Ингушетия</option>
+                    <option value="">Республика Калмыкия</option>
+                    <option value="">Республика Карелия</option>
+                    <option value="">Республика Коми</option>
+                    <option value="">Республика Крым</option>
+                    <option value="">Республика Марий Эл</option>
+                    <option value="">Республика Мордовия</option>
+                    <option value="">Республика Саха (Якутия)</option>
+                    <option value="">Республика Северная Осетия - Алания</option>
+                    <option value="">Республика Татарстан</option>
+                    <option value="">Республика Тыва</option>
+                    <option value="">Республика Хакасия</option>
+                    <option value="">Ростовская область</option>
+                    <option value="">Рязанская область</option>
+                    <option value="">Самарская область</option>
+                    <option value="">Саратовская область</option>
+                    <option value="">Сахалинская область</option>
+                    <option value="">Свердловская область</option>
+                    <option value="">Смоленская область</option>
+                    <option value="">Ставропольский край</option>
+                    <option value="">Тамбовская область</option>
+                    <option value="">Тверская область</option>
+                    <option value="">Томская область</option>
+                    <option value="">Тульская область</option>
+                    <option value="">Тюменская область</option>
+                    <option value="">Удмуртская Республика</option>
+                    <option value="">Ульяновская область</option>
+                    <option value="">Хабаровский край</option>
+                    <option value="">Ханты-Мансийский автономный округ</option>
+                    <option value="">Челябинская область</option>
+                    <option value="">Чеченская Республика</option>
+                    <option value="">Чувашская Республика</option>
+                    <option value="">Чукотский автономный округ</option>
+                    <option value="">Ямало-Ненецкий автономный округ</option>
+                    <option value="">Ярославская область</option>
+                    <option value="">Байконур</option>
+                </select>
+
+            <label for="rayon">Район (муниципальный район или район города)</label><br>
+                <input type="text" id="rayon" name="rayon"><br>
+            <label for="city">Город, населенный пункт</label>
+                <input type="text" id="city" name="city"><br>
+            <label for="street">Улица, дом</label>
+                <input type="text" id="street" name="street">
+
+            <p>Оценка мероприятия</p>
+            
+            <label for="otsenka"></label><br>
+                <select name="otsenka" id="otsenka">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                    <option value="">5</option>
+                </select><br>
+            <label for="otzyv">Отзыв о мероприятии</label><br>
+            <textarea id="subject" name="otzyv" placeholder="Write something.." style="height:200px"></textarea>
+        </div>
+
+        <div id="individual_student">
+            <p>Информация об онлайн-мероприятии и слушателях</p>
+
+            <label for="fio_teacher">ФИО слушателя, который самостоятельно подключился к онлайн-уроку</label><br>
+                <input type="text" id="fio_student" name="fio_student"><br>
+            <label for="number_classroom">Номер и буква класса, группы.</label><br>
+                <input type="text" id="number_classroom" name="number_classroom"><br>
+            <label for="question_session">Вы принимали участие в онлайн-уроках в эту сессию?</label>
+                <select name="question_session" size="0">
+                    <option value="yes">Да</option>
+                    <option value="no">Нет</option>
+                </select>
+            
+            <h3>Информация об образовательной организации</h3>
+            <p>Общая информация:</p>
+
+            <label for="Name_teach_organization">Наименование образовательной организации</label><br>
+                <input type="text" id="Name_teach_organization" name="Name_teach_organization"><br>
+            <label for="Name_teach_organization">Вид образовательной организации</label><br>
+                <select name="question_session" size="0">
+                    <option value="yes">Школа</option>
+                    <option value="no">профессиональная образовательная организация ПОО (техникум, колледж)</option>
+                    <option value="">учреждение для детей-сирот и детей без попеч. родит</option>
+                    <option value="">организация доп. образования</option>
+                    <option value="">детский сад</option>
+                    <option value="">библиотека</option>
+                    <option value="">центр социального обслуживания (помощи) населения</option>
+                    <option value="">иное</option>
+                </select>
+            <label for="Name_teach_organization">Email образовательной организации</label><br>
+                <input type="email" id="email_teach_teach_organization" name="email_teach_teach_organization"><br>
+            <label for="FIO_director_organization">ФИО директора образовательной организации</label><br>
+                <input type="text" id="FIO_director_organization" name="FIO_director_organization"><br>
+            
+            <p>Адрес образовательной организации</p>
+
+            <label for="index">Индекс</label><br>
+                <input type="text" id="index" name="index"><br>
+            <label for="region">Регон</label><br>
+                <select name="region" size="0">
+                    <option value="">Алтайский край</option>
+                    <option value="">Амурская область</option>
+                    <option value="">Архангельская область</option>
+                    <option value="">Астраханская область</option>
+                    <option value="">Белгородская область</option>
+                    <option value="">Брянская область</option>
+                    <option value="">Владимирская область</option>
+                    <option value="">Волгоградская область</option>
+                    <option value="">Вологодская область</option>
+                    <option value="">Воронежская область</option>
+                    <option value="">Санкт-Петербург</option>
+                    <option value="">Севастополь</option>
+                    <option value="">Еврейская автономная область</option>
+                    <option value="">Забайкальский край</option>
+                    <option value="">Ивановская область</option>
+                    <option value="">Иркутская область</option>
+                    <option value="">Кабардино-Балкарская Республика</option>
+                    <option value="">Калининградская область</option>
+                    <option value="">Калужская область</option>
+                    <option value="">Камчатский край</option>
+                    <option value="">Карачаево-Черкесская Республика</option>
+                    <option value="">Кемеровская область - Кузбасс</option>
+                    <option value="">Кировская область</option>
+                    <option value="">Костромская область</option>
+                    <option value="">Краснодарский край</option>
+                    <option value="">Красноярский край</option>
+                    <option value="">Курганская область</option>
+                    <option value="">Курская область</option>
+                    <option value="">Ленинградская область</option>
+                    <option value="">Липецкая область</option>
+                    <option value="">Магаданская область</option>
+                    <option value="">Московская область</option>
+                    <option value="">Мурманская область</option>
+                    <option value="">Ненецкий автономный округ</option>
+                    <option value="">Нижегородская область</option>
+                    <option value="">Новгородская область</option>
+                    <option value="">Новосибирская область</option>
+                    <option value="">Омская область</option>
+                    <option value="">Оренбургская область</option>
+                    <option value="">Орловская область</option>
+                    <option value="">Пензенская область</option>
+                    <option value="">Пермский край</option>
+                    <option value="">Приморский край</option>
+                    <option value="">Псковская область</option>
+                    <option value="">Республика Адыгея</option>
+                    <option value="">Республика Алтай</option>
+                    <option value="">Республика Башкортостан</option>
+                    <option value="">Республика Бурятия</option>
+                    <option value="">Республика Дагестан</option>
+                    <option value="">Республика Ингушетия</option>
+                    <option value="">Республика Калмыкия</option>
+                    <option value="">Республика Карелия</option>
+                    <option value="">Республика Коми</option>
+                    <option value="">Республика Крым</option>
+                    <option value="">Республика Марий Эл</option>
+                    <option value="">Республика Мордовия</option>
+                    <option value="">Республика Саха (Якутия)</option>
+                    <option value="">Республика Северная Осетия - Алания</option>
+                    <option value="">Республика Татарстан</option>
+                    <option value="">Республика Тыва</option>
+                    <option value="">Республика Хакасия</option>
+                    <option value="">Ростовская область</option>
+                    <option value="">Рязанская область</option>
+                    <option value="">Самарская область</option>
+                    <option value="">Саратовская область</option>
+                    <option value="">Сахалинская область</option>
+                    <option value="">Свердловская область</option>
+                    <option value="">Смоленская область</option>
+                    <option value="">Ставропольский край</option>
+                    <option value="">Тамбовская область</option>
+                    <option value="">Тверская область</option>
+                    <option value="">Томская область</option>
+                    <option value="">Тульская область</option>
+                    <option value="">Тюменская область</option>
+                    <option value="">Удмуртская Республика</option>
+                    <option value="">Ульяновская область</option>
+                    <option value="">Хабаровский край</option>
+                    <option value="">Ханты-Мансийский автономный округ</option>
+                    <option value="">Челябинская область</option>
+                    <option value="">Чеченская Республика</option>
+                    <option value="">Чувашская Республика</option>
+                    <option value="">Чукотский автономный округ</option>
+                    <option value="">Ямало-Ненецкий автономный округ</option>
+                    <option value="">Ярославская область</option>
+                    <option value="">Байконур</option>
+                </select>
+
+            <label for="rayon">Район (муниципальный район или район города)</label><br>
+                <input type="text" id="rayon" name="rayon"><br>
+            <label for="city">Город, населенный пункт</label>
+                <input type="text" id="city" name="city"><br>
+            <label for="street">Улица, дом</label>
+                <input type="text" id="street" name="street">
+
+            <p>Оценка мероприятия</p>
+            
+            <label for="otsenka"></label><br>
+                <select name="otsenka" id="otsenka">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                    <option value="">5</option>
+                </select><br>
+            <label for="otzyv">Отзыв о мероприятии</label><br>
+            <textarea id="subject" name="otzyv" placeholder="Write something.." style="height:200px"></textarea>
+        </div>
+        <button type="button" id="sent">Отправить</button>
+    </div>
+    <script type="text/javascript">
+        function selectoption(){
+            var elem = document.getElementById("form_of_participation").value;
+            document.getElementById("group_student").style.display = (elem == "group") ? "block" : "none";
+            document.getElementById("individual_student").style.display = (elem == "individual") ? "block" : "none";
+        }
+        </script>
+</body>
+</html>
